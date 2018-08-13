@@ -13,27 +13,27 @@ export default (state, action) => {
 	}	
 }
 
-
+ 
 
 function defineCart(state, id) {
-
+  
 	let newCartItem = state.products.find(product => {
 		return product.id === id
 	})
-	
-	if (state.cart.some(product => product.id === newCartItem.id)) {
+  
+  let newCart = state.cart;
 
-		state.products.find(product => {
+	if (newCart.some(product => product.id === newCartItem.id)) {
+
+		newCart.find(product => {
 			return product.id === id
 		}).count += 1;
 	
 	} else {
-		newCartItem.count = 1;
-		state.cart.push(newCartItem)
-
+		newCart.push({...newCartItem, count: 1})
 	}
 	
-	return state.cart;
+	return newCart;
 }
 
 
