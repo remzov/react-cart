@@ -6,7 +6,7 @@ class CartItem extends Component {
         const count = this.props.count;
 		return (
             <li className="cart-item">
-                {title}. В корзине {count} шт.
+                {title}. {count} шт.
             </li>
 		);
 	}

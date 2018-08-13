@@ -2,21 +2,21 @@
     {
         "id": "1",
         "title": "Sony EC 320",
-        "price": "25000"
+        "price": 25000
     },
     {
         "id": "2",
         "title": "Iphone 5G",
-        "price": "45000"
+        "price": 45000
     },
     {
         "id": "3",
         "title": "Samsung Galaxy 200N",
-        "price": "15000"
+        "price": 15000
     },
     {
         "id": "4",
         "title": "Zvonilnik",
-        "price": "5000"
+        "price": 5000
     }
 ]

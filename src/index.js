@@ -8,16 +8,16 @@ import productList from './store.json'
 
 const mountPoint = document.getElementById('root');
 const initialState = {
-    products: productList,
-    cart: []
+  products: productList,
+  cart: []
 }
 const store = createStore(update, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App/>
-    </Provider>,
-    mountPoint
+  <Provider store={store}>
+      <App/>
+  </Provider>,
+  mountPoint
 );
 
 //  store.subscribe( () =>  console.log(store.getState()) );

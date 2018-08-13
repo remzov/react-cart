@@ -5,7 +5,6 @@ import './cart.css';
 
 class Cart extends Component {
 	render() {	
-		console.log(this.props.cart)
 		return (
 			<div className="cart">
 				<ul>
@@ -13,9 +12,18 @@ class Cart extends Component {
 						return <CartItem key={product.id} title={product.title} count={product.count}/>
 					})}
 				</ul>
+        { (this.props.cart.length > 0) ? `Итого: ${this.sumCart(this.props.cart)} рублей` : false}
 			</div>
 		);
-	}
+  }
+  
+  sumCart(cart) {
+
+    return cart.reduce((sum, item) => {
+      return sum + item.price*item.count
+    }, 0)
+
+  }
 }
 
 export default connect(
