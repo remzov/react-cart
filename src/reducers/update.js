@@ -1,37 +1,101 @@
-import { ADD_TO_CART } from '../constants/actionTypes';
+import { PURCHASE, DECREASE_COUNT, INCREASE_COUNT, CLEAR_COUNT } from '../constants/actionTypes';
 
 export default (state, action) => {
 
 	switch (action.type) {
-		case ADD_TO_CART: {
-			return {
-				...state,
-				cart: defineCart(state, action.payload)
-			}
+		case PURCHASE: {
+			return purchase(state, action.payload)
+		}
+		case DECREASE_COUNT: {
+			return decreaseCount(state, action.payload)
+		}
+		case INCREASE_COUNT: {
+			return increaseCount(state, action.payload)
+		}
+		case CLEAR_COUNT: {
+			return clearCount(state, action.payload)
 		}
 		default: return state;
   }	
   
 }
 
-function defineCart(state, id) {
+function purchase(state, id) {
 
-	let newCartItem = state.products.find(product => {
+	const products = [...state.products];
+	const cart = [...state.cart];
+	const item = products.find(product => {
 		return product.id === id
-	})
-  let newCart = [...state.cart]
-  
-	if (newCart.some(product => product.id === newCartItem.id)) {
+	});
+	
+	products.find(product => {
+		return product.id === id
+	}).count -=1;
+	
+	if (cart.some(product => product.id === id)) {
 
-		newCart.find(product => {
+		cart.find(product => {
 			return product.id === id
 		}).count += 1;
 	
 	} else {
-		newCart.push({...newCartItem, count: 1})
+		cart.push({...item, count: 1})
 	}
-  return newCart;
-  
+
+  return {...state, products, cart};
 }
 
+function decreaseCount(state, id) {
 
+	const products = [...state.products];
+	const cart = [...state.cart];
+
+	cart.find(product => {
+		return product.id === id
+	}).count -= 1;
+
+	const item = cart.find(product => product.id === id);
+
+	if (item.count === 0) {
+		cart.splice(cart.indexOf(item), 1);
+	}
+
+	products.find(product => {
+		return product.id === id
+	}).count += 1;
+ 
+	return {...state, products, cart}
+}
+
+function increaseCount(state, id) {
+
+	const products = [...state.products];
+	const cart = [...state.cart];
+	const item = products.find(product => product.id === id);
+
+	if (item.count !== 0) {
+		cart.find(product => {
+			return product.id === id
+		}).count += 1;
+	
+		products.find(product => {
+			return product.id === id
+		}).count -=1;
+	}
+
+	return {...state, products, cart}
+}
+
+function clearCount(state, id) {
+	const products = [...state.products];
+	const cart = [...state.cart];
+	const item = cart.find(product => product.id === id);
+
+	products.find(product => {
+		return product.id === id
+	}).count += item.count;
+
+	cart.splice(cart.indexOf(item), 1);
+
+	return {...state, products, cart}
+}

@@ -6,7 +6,7 @@ import Cart from  '../../containers/cart/cart';
 class App extends Component {
 	render() {
 		return( 
-			<div>
+			<div className="app">
 				<Store/>
 				<Cart/>
 			</div>

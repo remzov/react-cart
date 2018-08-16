@@ -5,8 +5,12 @@
     justify-content: space-around;
     width: 200px;
     height: 200px;
-    margin: 0 25px;
+    margin-right: 25px;
     border: 1px solid #666;
+}
+
+.product:last-child {
+    margin-right: 0;
 }
 
 .product__title {

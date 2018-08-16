@@ -1,3 +1,8 @@
+.app {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
 .row {
     display: flex;
 }
@@ -6,3 +11,4 @@
     font-size: 25px;
     margin: 0 25px;
 }
+

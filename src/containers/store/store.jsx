@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Product from '../../components/product/product';
-import { addToCart } from '../../actions/actions';
-
+import { purchase } from '../../actions/actions';
 import './store.css';
 
 class Store extends Component {
@@ -10,7 +9,7 @@ class Store extends Component {
 		return (
 			<div className="store">
 				{this.props.products.map(product => {
-					return <Product key={product.id} productData={product} addToCart={this.props.addToCart}/>
+					return <Product key={product.id} productData={product} purchase={this.props.purchase}/>
 				})}
 			</div>
 		);
@@ -22,7 +21,7 @@ export default connect(
 		products: state.products
 	}),
 	dispatch => ({
-		addToCart: (id) => dispatch(addToCart(id)) 
+		purchase: (id) => dispatch(purchase(id)) 
 	}) 
 )(Store);
 

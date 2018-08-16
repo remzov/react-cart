@@ -1,0 +1,28 @@
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 20px;
+  border-bottom: 1px solid #999;
+}
+
+.cart-item__cost {
+  margin-left: 20px;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.cart-item__control {
+  margin: 0 20px;
+}
+
+.cart-item__value {
+  width: 20px;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.cart-item__clear {
+  border: 0;
+  background: transparent;
+}

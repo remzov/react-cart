@@ -1,5 +1,6 @@
 .store {
     display: flex;
+    margin-bottom: 50px;
 }
 
 .store > div {
