@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CartItem from '../../components/cart-item/cart-item';
-import { decreaseCount, increaseCount, clearCount } from '../../actions/actions';
+import { decreaseCount, increaseCount, clearCount, showPayment } from '../../actions/actions';
 import './cart.css';
 
 class Cart extends Component {
@@ -15,8 +15,8 @@ class Cart extends Component {
 						return <CartItem key={product.id} cartData={product} decreaseCount={this.props.decreaseCount} increaseCount={this.props.increaseCount} clearCount={this.props.clearCount}/>
 					})}
 				</ul>
-        <div className="cart__result">Итого: {this.sumCart(this.props.cart)} рублей</div>
-				<button className="cart__button" type="button">Перейти к оплате</button>
+                <div className="cart__result">Итого: {this.sumCart(this.props.cart)} рублей</div>
+				<button className="cart__button" type="button" onClick={() => this.props.showPayment()}>Перейти к оплате</button>
 			</div>
 			: false
 		);
@@ -37,7 +37,8 @@ export default connect(
 	dispatch => ({
 		decreaseCount: (id) => dispatch(decreaseCount(id)),
 		increaseCount: (id) => dispatch(increaseCount(id)),
-		clearCount: (id) => dispatch(clearCount(id))
+		clearCount: (id) => dispatch(clearCount(id)),
+		showPayment: () => dispatch(showPayment())
 	})
 )(Cart);
 

@@ -1,0 +1,25 @@
+.form {
+    border: 1px solid #999;
+    padding: 25px;
+}
+
+.form__row {
+    margin-bottom: 20px;
+}
+
+.form__title {
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-weight: bold; 
+}
+
+.form__input {
+    width: 400px;
+    height: 35px;
+    padding: 0 10px;
+}
+
+.form__submit {
+    padding: 10px;
+    font-size: 18px;
+}

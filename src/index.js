@@ -2,14 +2,15 @@ import React  from 'react';
 import { createStore } from 'redux';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './components/app/app';
+import App from './containers/app/app';
 import update from './reducers/update'
 import productList from './store.json'
 
 const mountPoint = document.getElementById('root');
 const initialState = {
   products: productList,
-  cart: []
+  cart: [],
+  showPayment: false
 }
 const store = createStore(update, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 

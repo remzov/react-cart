@@ -1,26 +1,27 @@
 .cart {
-  border: 1px solid #999;
-  padding: 25px;
+    border: 1px solid #999;
+    padding: 25px;
+    margin-bottom: 50px;    
 }
 
 .cart ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 .cart__title {
-  font-size: 25px;
-  margin-bottom: 30px;
-  font-weight: bold; 
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-weight: bold; 
 }
 
 .cart__result {
-  padding: 20px 0;
-  font-size: 20px;
+    padding: 20px 0;
+    font-size: 20px;
 }
 
 .cart__button { 
-  padding: 10px;
-  font-size: 18px;
+    padding: 10px;
+    font-size: 18px;
 }
