@@ -17,7 +17,7 @@ class Form extends Component {
                 <div className="form__row">
                     <input className="form__input" type="text" name="name" placeholder="Имя владельца" pattern="[A-Z]{3,}" title="Введите буквы латинского алфавита в верхнем регистре" required onChange={(event) => ( this.props.form.checked) ? this.checkInput(event) : false}/>
                     {(this.props.form.checked && this.props.cardNameError ) ? 
-                    <div className="form__error">Введите буквы латинского алфавита в верхнем регистре</div>
+                    <div className="form__error">Введите не менее трёх букв латинского алфавита в верхнем регистре</div>
                     : false }
                 </div>
                 <div className="form__row">
