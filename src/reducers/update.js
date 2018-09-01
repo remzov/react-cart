@@ -1,4 +1,4 @@
-import { PURCHASE, DECREASE_COUNT, INCREASE_COUNT, CLEAR_COUNT, SHOW_PAYMENT } from '../constants/actionTypes';
+import { PURCHASE, DECREASE_COUNT, INCREASE_COUNT, CLEAR_COUNT, SHOW_PAYMENT, CHECK_FORM, SHOW_NAME_ERROR, SHOW_NUMBER_ERROR, HIDE_NAME_ERROR, HIDE_NUMBER_ERROR, PAY } from '../constants/actionTypes';
 
 export default (state, action) => {
 	switch (action.type) {
@@ -14,17 +14,32 @@ export default (state, action) => {
 		case CLEAR_COUNT: {
 			return clearCount(state, action.payload)
 		}
-		case CLEAR_COUNT: {
-			return clearCount(state, action.payload)
-		}
 		case SHOW_PAYMENT: {
 			return showPayment(state)
+		}
+		case CHECK_FORM: {
+			return checkForm(state)
+		}
+		case SHOW_NAME_ERROR: {
+			return showNameError(state)
+		}
+		case SHOW_NUMBER_ERROR: {
+			return showNumberError(state)
+		}
+		case HIDE_NAME_ERROR: {
+			return hideNameError(state)
+		}
+		case HIDE_NUMBER_ERROR: {
+			return hideNumberError(state)
+		}
+		case PAY: {
+			return pay(state)
 		}
 		default: return state;
 	}	
 }
 
-function purchase(state, id) {
+const purchase = (state, id) => {
 	const products = [...state.products];
 	const cart = [...state.cart];
 	const item = products.find((product) => {
@@ -45,10 +60,10 @@ function purchase(state, id) {
 		cart.push({...item, count: 1})
 	}
 
-  return {...state, products, cart};
+	return {...state, products, cart};
 }
 
-function decreaseCount(state, id) {
+const decreaseCount = (state, id) => {
 	const products = [...state.products];
 	const cart = [...state.cart];
 
@@ -69,7 +84,7 @@ function decreaseCount(state, id) {
 	return {...state, products, cart}
 }
 
-function increaseCount(state, id) {
+const increaseCount = (state, id) => {
 	const products = [...state.products];
 	const cart = [...state.cart];
 	const item = products.find((product) => product.id === id);
@@ -87,7 +102,7 @@ function increaseCount(state, id) {
 	return {...state, products, cart}
 }
 
-function clearCount(state, id) {
+const clearCount = (state, id) => {
 	const products = [...state.products];
 	const cart = [...state.cart];
 	const item = cart.find((product) => product.id === id);
@@ -101,6 +116,50 @@ function clearCount(state, id) {
 	return {...state, products, cart}
 }
 
-function showPayment(state) {
+const showPayment = (state) => {
 	return {...state, showPayment: true}
+}
+
+const checkForm = (state) => {
+	return {
+		...state,
+		...state.form.checked = true
+	}
+}
+
+const showNameError = (state) => {
+	return {
+		...state, 
+		...state.form.errors.cardName = true
+	}
+}
+ 
+const showNumberError = (state) => {
+	return {
+		...state, 
+		...state.form.errors.cardNumber = true
+	}
+}
+
+const hideNameError = (state) => {
+	return {
+		...state, 
+		...state.form.errors.cardName = false
+	}
+}
+
+const hideNumberError = (state) => {
+	return {
+		...state, 
+		...state.form.errors.cardNumber = false
+	}
+}
+
+const pay = (state) => {
+	return {
+		...state, 
+		...state.cart = [],
+		...state.showPayment = false,
+		...state.form.checked = false
+	}
 }

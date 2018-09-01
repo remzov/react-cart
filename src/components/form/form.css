@@ -14,12 +14,25 @@
 }
 
 .form__input {
-    width: 400px;
+    width: 300px;
     height: 35px;
     padding: 0 10px;
+}
+
+.form_checked .form__input:valid {
+    border-color: green;
+}
+
+.form_checked .form__input:invalid {
+    border-color: red;
 }
 
 .form__submit {
     padding: 10px;
     font-size: 18px;
+}
+
+.form__error {
+    color: red;
+    font-size: 14px;
 }
