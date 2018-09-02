@@ -4,7 +4,7 @@ import './app.css';
 import Store from  '../../containers/store/store';
 import Cart from  '../../containers/cart/cart';
 import Form from  '../../components/form/form';
- import { checkForm, showNameError, showNumberError, hideNumberError, hideNameError, pay } from '../../actions/actions';
+ import { checkForm, showNameError, showNumberError, hideNumberError, hideNameError, pay } from '../../actions/form';
 
 class App extends Component {
 	render() {

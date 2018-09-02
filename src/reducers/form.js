@@ -1,13 +1,11 @@
 import { CHECK_FORM, SHOW_NAME_ERROR, SHOW_NUMBER_ERROR, HIDE_NAME_ERROR, HIDE_NUMBER_ERROR, PAY } from '../constants/actionTypes';
 
 const initialState = {
-    form: {
-        checked: false,
-        errors: {
-            cardNumber: false,
-            cardName: false
-        }
-    }
+	checked: false,
+	errors: {
+		cardNumber: false,
+		cardName: false
+	}
 }
 
 export default (state = initialState, action) => {

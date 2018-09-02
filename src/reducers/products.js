@@ -2,7 +2,7 @@ import { PURCHASE } from '../constants/actionTypes';
 import productList from '../store.json'
 
 const initialState = {
-	products: productList,
+	items: productList
 }
 
 export default (state = initialState, action) => {
@@ -15,8 +15,9 @@ export default (state = initialState, action) => {
 }
 
 const purchase = (state, id) => {
-	const products = [...state.products];
-	const cart = [...state.cart];
+	debugger;
+	const products = [...state.products.items];
+	const cart = [...state.cart.items];
 	const item = products.find((product) => {
 		return product.id === id
 	});

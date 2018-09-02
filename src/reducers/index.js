@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'; 
-import store from './store';
+import products from './products';
 import cart from './cart';
 import form from './form';
 
 export default combineReducers({
-    store,
+    products,
     cart,
     form
 });
