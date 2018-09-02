@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Product from '../../components/product/product';
-import { purchase } from '../../actions/actions';
+import { purchase } from '../../actions/products';
 import './store.css';
 
 class Store extends Component {
@@ -18,7 +18,7 @@ class Store extends Component {
 
 export default connect(
 	state => ({
-		products: state.products
+		products: state.products.items
 	}),
 	dispatch => ({
 		purchase: (id) => dispatch(purchase(id)) 

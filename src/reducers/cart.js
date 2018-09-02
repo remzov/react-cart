@@ -1,7 +1,7 @@
 import { DECREASE_COUNT, INCREASE_COUNT, CLEAR_COUNT, SHOW_PAYMENT } from '../constants/actionTypes';
 
 const initialState = {
-    cart: [],
+    items: [],
     showPayment: false
 }
 
@@ -24,8 +24,8 @@ export default (state = initialState, action) => {
 }
 
 const increaseCount = (state, id) => {
-	const products = [...state.products];
-	const cart = [...state.cart];
+	const products = [...state.products.items];
+	const cart = [...state.cart.items];
 	const item = products.find((product) => product.id === id);
 
 	if (item.count !== 0) {
@@ -46,8 +46,8 @@ const increaseCount = (state, id) => {
 }
 
 const decreaseCount = (state, id) => {
-	const products = [...state.products];
-	const cart = [...state.cart];
+	const products = [...state.products.items];
+	const cart = [...state.cart.items];
 
 	cart.find((product) => {
 		return product.id === id
@@ -71,8 +71,8 @@ const decreaseCount = (state, id) => {
 }
 
 const clearCount = (state, id) => {
-	const products = [...state.products];
-	const cart = [...state.cart];
+	const products = [...state.products.items];
+	const cart = [...state.cart.items];
 	const item = cart.find((product) => product.id === id);
 
 	products.find((product) => {
